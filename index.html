@@ -3,44 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador para mi Amor</title>
+    <title>Contador para mi Amor ❤️</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            background-color: #f0f8ff; 
-            color: #333; 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
         }
-        h1 { color: #ff69b4; } /* Rosa para un toque romántico */
-        p { font-size: 18px; }
-        #countdown { font-size: 48px; color: #ff4500; } /* Naranja para el número */
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .countdown {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .time-unit {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 20px 30px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .time-unit .number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            display: block;
+        }
+
+        .time-unit .label {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .hearts {
+            font-size: 4rem;
+            margin: 20px 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .side-heart-left, .side-heart-right {
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.4;
+            color: #ff69b4;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: pulse 4s infinite;
+        }
+
+        .side-heart-left { left: 5%; }
+        .side-heart-right { right: 5%; }
+
+        .bottom-message {
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .countdown { padding: 20px 10px; gap: 10px; }
+            .time-unit { padding: 15px 20px; min-width: 90px; }
+            .time-unit .number { font-size: 3rem; }
+            .side-heart-left, .side-heart-right { font-size: 5rem; }
+        }
     </style>
 </head>
 <body>
-    <h1>¡Faltan <span id="countdown"></span> días para volver a casa!</h1>
-    <p>Te extraño mucho, mi amor. ¡Pronto estaremos juntos de nuevo! ❤️</p>
-    <!-- Agrega una foto opcional: sube una imagen a GitHub y pon el URL relativo, ej: <img src="foto-nuestra.jpg" alt="Nosotros" width="300"> -->
+
+    <div class="side-heart-left">❤️</div>
+    <div class="side-heart-right">❤️</div>
+
+    <div class="container">
+        <h1>¡Faltan... para volver a casa! 🏡❤️</h1>
+        <p class="subtitle">Te extraño cada segundo, mi amor. ¡Pronto nos abrazamos!</p>
+
+        <div class="countdown" id="countdown">
+            <div class="time-unit">
+                <span class="number" id="days">0</span>
+                <span class="label">Días</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="hours">0</span>
+                <span class="label">Horas</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="minutes">0</span>
+                <span class="label">Minutos</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="seconds">0</span>
+                <span class="label">Segundos</span>
+            </div>
+        </div>
+
+        <div class="hearts">💕 💖 💕</div>
+
+        <p class="bottom-message">Cada día que pasa es un día más cerca de ti. Te amo infinitamente 🌹</p>
+    </div>
+
     <script>
-        // Cambia esta fecha por la de regreso real (formato en inglés: Mes Día, Año Hora)
-        var countDownDate = new Date("Apr 15, 2026 00:00:00").getTime();
-        
-        // Actualiza el contador cada segundo
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-            
-            // Calcula días restantes
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            
-            // Muestra el resultado
-            document.getElementById("countdown").innerHTML = days;
-            
-            // Si ya pasó la fecha
+        // Fecha de llegada: 24 de marzo de 2026 a las 00:00 (puedes cambiar la hora si regresa a una hora específica)
+        const endDate = new Date("2026-03-24T00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
             if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "¡Bienvenida a casa!";
+                document.getElementById("days").innerHTML = "0";
+                document.getElementById("hours").innerHTML = "0";
+                document.getElementById("minutes").innerHTML = "0";
+                document.getElementById("seconds").innerHTML = "0";
+                // Opcional: mensaje final
+                document.querySelector(".subtitle").innerHTML = "¡Ya estás en casa! Te amo ❤️";
+                return;
             }
-        }, 1000); // Actualiza cada 1 segundo
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        // Actualiza cada segundo
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Ejecuta inmediatamente
     </script>
+
 </body>
 </html>
