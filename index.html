@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador para mi Amor</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #f0f8ff; 
+            color: #333; 
+        }
+        h1 { color: #ff69b4; } /* Rosa para un toque romántico */
+        p { font-size: 18px; }
+        #countdown { font-size: 48px; color: #ff4500; } /* Naranja para el número */
+    </style>
+</head>
+<body>
+    <h1>¡Faltan <span id="countdown"></span> días para volver a casa!</h1>
+    <p>Te extraño mucho, mi amor. ¡Pronto estaremos juntos de nuevo! ❤️</p>
+    <!-- Agrega una foto opcional: sube una imagen a GitHub y pon el URL relativo, ej: <img src="foto-nuestra.jpg" alt="Nosotros" width="300"> -->
+    <script>
+        // Cambia esta fecha por la de regreso real (formato en inglés: Mes Día, Año Hora)
+        var countDownDate = new Date("Apr 15, 2026 00:00:00").getTime();
+        
+        // Actualiza el contador cada segundo
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            
+            // Calcula días restantes
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            // Muestra el resultado
+            document.getElementById("countdown").innerHTML = days;
+            
+            // Si ya pasó la fecha
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡Bienvenida a casa!";
+            }
+        }, 1000); // Actualiza cada 1 segundo
+    </script>
+</body>
+</html>
