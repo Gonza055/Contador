@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador para mi Amor ❤️</title>
+    <title>Para ti, Esthefani ❤️</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
             color: #333;
             min-height: 100vh;
             display: flex;
@@ -18,26 +18,28 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
+            position: relative;
         }
 
         .container {
             max-width: 900px;
             width: 90%;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: #fff;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            margin: 20px 0;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+            margin: 20px 0 10px;
         }
 
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #fff;
             margin-bottom: 30px;
+            max-width: 700px;
         }
 
         .countdown {
@@ -45,88 +47,95 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
             padding: 30px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
         .time-unit {
-            background: rgba(255,255,255,0.9);
-            border-radius: 15px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
             padding: 20px 30px;
-            min-width: 120px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            min-width: 130px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         .time-unit .number {
-            font-size: 4rem;
+            font-size: 4.2rem;
             font-weight: bold;
-            color: #e74c3c;
+            color: #e91e63;
             display: block;
         }
 
         .time-unit .label {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #555;
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
-        .hearts {
-            font-size: 4rem;
-            margin: 20px 0;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .side-heart-left, .side-heart-right {
+        /* Collage de stickers y emojis flotantes */
+        .sticker {
             position: absolute;
-            font-size: 8rem;
-            opacity: 0.4;
-            color: #ff69b4;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: pulse 4s infinite;
+            font-size: 3.5rem;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
         }
 
-        .side-heart-left { left: 5%; }
-        .side-heart-right { right: 5%; }
+        .sticker1 { top: 10%; left: 8%; animation-delay: 0s; }
+        .sticker2 { top: 15%; right: 10%; animation-delay: 1.5s; }
+        .sticker3 { bottom: 12%; left: 12%; animation-delay: 3s; }
+        .sticker4 { bottom: 18%; right: 15%; animation-delay: 4.5s; }
+        .sticker5 { top: 40%; left: 5%; font-size: 4rem; animation-delay: 2s; }
+        .sticker6 { top: 60%; right: 6%; font-size: 4.5rem; animation-delay: 5s; }
+        .sticker7 { bottom: 35%; left: 18%; animation-delay: 6.5s; }
+
+        .hearts-line {
+            font-size: 2.5rem;
+            margin: 30px 0;
+            animation: float 7s ease-in-out infinite;
+        }
 
         .bottom-message {
-            margin-top: 40px;
-            font-size: 1.5rem;
+            margin-top: 50px;
+            font-size: 1.6rem;
             color: #fff;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+            max-width: 700px;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .countdown { padding: 20px 10px; gap: 10px; }
-            .time-unit { padding: 15px 20px; min-width: 90px; }
-            .time-unit .number { font-size: 3rem; }
-            .side-heart-left, .side-heart-right { font-size: 5rem; }
+            h1 { font-size: 2.4rem; }
+            .subtitle, .bottom-message { font-size: 1.3rem; }
+            .countdown { padding: 20px 10px; gap: 12px; }
+            .time-unit { padding: 15px 20px; min-width: 100px; }
+            .time-unit .number { font-size: 3.2rem; }
+            .sticker { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="side-heart-left">❤️</div>
-    <div class="side-heart-right">❤️</div>
+    <!-- Collage de stickers flotantes -->
+    <div class="sticker sticker1">🌸</div>
+    <div class="sticker sticker2">💗</div>
+    <div class="sticker sticker3">✨</div>
+    <div class="sticker sticker4">🌟</div>
+    <div class="sticker sticker5">🥰</div>
+    <div class="sticker sticker6">💕</div>
+    <div class="sticker sticker7">🌷</div>
 
     <div class="container">
-        <h1>¡Faltan... para volver a casa! 🏡❤️</h1>
-        <p class="subtitle">Te extraño cada segundo, mi amor. ¡Pronto nos abrazamos!</p>
+        <h1>Para ti, Esthefani 💖</h1>
+        <p class="subtitle">Cada día que pasa es un día menos para que vuelvas a casa. Lo estas haciendo muy bien mi amor, estás siendo increíblemente fuerte y valiente. Pienso en ti todo el tiempo y estoy muy orgulloso de cómo lo estás llevando.</p>
 
         <div class="countdown" id="countdown">
             <div class="time-unit">
@@ -147,13 +156,12 @@
             </div>
         </div>
 
-        <div class="hearts">💕 💖 💕</div>
+        <div class="hearts-line">💞 🌸 💞 🌷 💞 ✨ 💞</div>
 
-        <p class="bottom-message">Cada día que pasa es un día más cerca de ti. Te amo infinitamente 🌹</p>
+        <p class="bottom-message">Falta poquito para que estés de vuelta en casa. Eres mi persona favorita en el mundo entero. Te extraño mucho mi bebe tifi ❤️</p>
     </div>
 
     <script>
-        // Fecha de llegada: 24 de marzo de 2026 a las 00:00 (puedes cambiar la hora si regresa a una hora específica)
         const endDate = new Date("2026-03-24T00:00:00").getTime();
 
         function updateCountdown() {
@@ -165,8 +173,7 @@
                 document.getElementById("hours").innerHTML = "0";
                 document.getElementById("minutes").innerHTML = "0";
                 document.getElementById("seconds").innerHTML = "0";
-                // Opcional: mensaje final
-                document.querySelector(".subtitle").innerHTML = "¡Ya estás en casa! Te amo ❤️";
+                document.querySelector(".subtitle").innerHTML = "¡Ya casi estás en casa, Esthefani! Te amo mucho ❤️";
                 return;
             }
 
@@ -181,9 +188,8 @@
             document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
         }
 
-        // Actualiza cada segundo
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // Ejecuta inmediatamente
+        updateCountdown();
     </script>
 
 </body>
